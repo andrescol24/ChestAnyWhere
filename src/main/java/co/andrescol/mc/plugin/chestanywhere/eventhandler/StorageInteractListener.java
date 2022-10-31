@@ -1,5 +1,6 @@
-package es.mithrandircraft.storage.eventhandler;
+package co.andrescol.mc.plugin.chestanywhere.eventhandler;
 
+import co.andrescol.mc.plugin.chestanywhere.data.StorageContent;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -8,10 +9,9 @@ import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 
-import es.mithrandircraft.storage.Storage;
-import es.mithrandircraft.storage.StorageHolder;
-import es.mithrandircraft.storage.data.StorageContent;
-import es.mithrandircraft.storage.data.YamlDataManager;
+import co.andrescol.mc.plugin.chestanywhere.Storage;
+import co.andrescol.mc.plugin.chestanywhere.StorageHolder;
+import co.andrescol.mc.plugin.chestanywhere.data.YamlDataManager;
 
 /**
  * Listener for the inventories interaction. It validate if the invetory is a

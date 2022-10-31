@@ -1,4 +1,4 @@
-package es.mithrandircraft.storage.data;
+package co.andrescol.mc.plugin.chestanywhere.data;
 
 import java.util.Arrays;
 import java.util.List;

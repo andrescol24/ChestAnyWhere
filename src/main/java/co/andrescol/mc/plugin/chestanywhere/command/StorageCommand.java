@@ -1,10 +1,10 @@
-package es.mithrandircraft.storage.command;
+package co.andrescol.mc.plugin.chestanywhere.command;
 
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import es.mithrandircraft.storage.Storage;
+import co.andrescol.mc.plugin.chestanywhere.Storage;
 
 /**
  * Superclass that define utils methods

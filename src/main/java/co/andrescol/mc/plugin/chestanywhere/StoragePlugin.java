@@ -1,16 +1,15 @@
-package es.mithrandircraft.storage;
+package co.andrescol.mc.plugin.chestanywhere;
 
 import java.io.File;
 import java.util.logging.Level;
 
+import co.andrescol.mc.plugin.chestanywhere.command.OpenStorageCommand;
+import co.andrescol.mc.plugin.chestanywhere.configuration.PluginLanguaje;
+import co.andrescol.mc.plugin.chestanywhere.eventhandler.StorageInteractListener;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import es.mithrandircraft.storage.command.OpenStorageCommand;
-import es.mithrandircraft.storage.configuration.PluginLanguaje;
-import es.mithrandircraft.storage.eventhandler.StorageInteractListener;
 
 /**
  * plugin's main class

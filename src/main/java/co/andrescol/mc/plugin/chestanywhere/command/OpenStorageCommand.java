@@ -1,8 +1,9 @@
-package es.mithrandircraft.storage.command;
+package co.andrescol.mc.plugin.chestanywhere.command;
 
 import java.util.LinkedList;
 import java.util.List;
 
+import co.andrescol.mc.plugin.chestanywhere.data.StorageContent;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -11,13 +12,12 @@ import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 
-import es.mithrandircraft.storage.Storage;
-import es.mithrandircraft.storage.StorageHolder;
-import es.mithrandircraft.storage.configuration.PluginConfiguration;
-import es.mithrandircraft.storage.configuration.PluginLanguaje;
-import es.mithrandircraft.storage.configuration.PluginLanguaje.LanguajeProperty;
-import es.mithrandircraft.storage.data.YamlDataManager;
-import es.mithrandircraft.storage.data.StorageContent;
+import co.andrescol.mc.plugin.chestanywhere.Storage;
+import co.andrescol.mc.plugin.chestanywhere.StorageHolder;
+import co.andrescol.mc.plugin.chestanywhere.configuration.PluginConfiguration;
+import co.andrescol.mc.plugin.chestanywhere.configuration.PluginLanguaje;
+import co.andrescol.mc.plugin.chestanywhere.configuration.PluginLanguaje.LanguajeProperty;
+import co.andrescol.mc.plugin.chestanywhere.data.YamlDataManager;
 
 /**
  * This command executor make that the player open the inventory. This command

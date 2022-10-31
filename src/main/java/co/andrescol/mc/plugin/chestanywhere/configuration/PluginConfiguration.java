@@ -1,8 +1,8 @@
-package es.mithrandircraft.storage.configuration;
+package co.andrescol.mc.plugin.chestanywhere.configuration;
 
 import org.bukkit.configuration.file.FileConfiguration;
 
-import es.mithrandircraft.storage.Storage;
+import co.andrescol.mc.plugin.chestanywhere.Storage;
 
 /**
  * Singleton class that save the configuration

@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-package es.mithrandircraft.storage.configuration;
+package co.andrescol.mc.plugin.chestanywhere.configuration;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -14,7 +14,7 @@ import java.util.Properties;
 
 import org.bukkit.ChatColor;
 
-import es.mithrandircraft.storage.Storage;
+import co.andrescol.mc.plugin.chestanywhere.Storage;
 
 /**
  * Singleton that contains the languaje configuration

@@ -1,4 +1,4 @@
-package es.mithrandircraft.storage;
+package co.andrescol.mc.plugin.chestanywhere;
 
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;

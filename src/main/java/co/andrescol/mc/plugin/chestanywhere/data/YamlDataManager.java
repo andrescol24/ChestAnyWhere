@@ -1,14 +1,14 @@
-package es.mithrandircraft.storage.data;
+package co.andrescol.mc.plugin.chestanywhere.data;
 
 import java.io.File;
 import java.io.IOException;
 
+import co.andrescol.mc.plugin.chestanywhere.configuration.PluginConfiguration;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.HumanEntity;
 
-import es.mithrandircraft.storage.Storage;
-import es.mithrandircraft.storage.configuration.PluginConfiguration;
+import co.andrescol.mc.plugin.chestanywhere.Storage;
 
 public class YamlDataManager {
 
