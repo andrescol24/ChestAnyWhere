@@ -1,10 +1,9 @@
-name: Storage
+name: ChestAnyWhere
 version: 1.0.0 
-main: es.mithrandircraft.storage.StoragePlugin
+main: co.andrescol.mc.plugin.chestanywhere
 description: With this plugin you can save items in a SQLite or MySQL Database for each player
 author: [xX_andrescol_Xx]
-api-version: 1.15
-website: www.mithrandircraft.es
+api-version: 1.19
 commands:
   sopen: 
     description: Open the storage 
