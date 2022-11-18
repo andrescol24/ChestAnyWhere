@@ -17,7 +17,7 @@ import org.bukkit.plugin.java.JavaPlugin;
  * @author xX_andrescol_Xx
  *
  */
-public class StoragePlugin extends JavaPlugin implements Storage {
+public class ChestAnyWherePlugin extends JavaPlugin implements ChestAnyWhere {
 	
 	Listener storageInteractLister;
 

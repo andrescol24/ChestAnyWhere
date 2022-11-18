@@ -10,7 +10,7 @@ import org.bukkit.configuration.file.FileConfiguration;
  * @author andrescol24
  *
  */
-public interface Storage {
+public interface ChestAnyWhere {
 
 	/**
 	 * Write a console message

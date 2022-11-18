@@ -14,7 +14,7 @@ import java.util.Properties;
 
 import org.bukkit.ChatColor;
 
-import co.andrescol.mc.plugin.chestanywhere.Storage;
+import co.andrescol.mc.plugin.chestanywhere.ChestAnyWhere;
 
 /**
  * Singleton that contains the languaje configuration
@@ -24,14 +24,12 @@ import co.andrescol.mc.plugin.chestanywhere.Storage;
 
 public class PluginLanguaje {
 
-	private Storage plugin;
+	private final ChestAnyWhere plugin;
 
 	/**
 	 * Create the instance
-	 * 
-	 * @param plugin
 	 */
-	private PluginLanguaje(Storage plugin) {
+	private PluginLanguaje(ChestAnyWhere plugin) {
 		this.plugin = plugin;
 	}
 
@@ -77,7 +75,7 @@ public class PluginLanguaje {
 
 	private static PluginLanguaje instance;
 
-	public static PluginLanguaje getInstance(Storage plugin) {
+	public static PluginLanguaje getInstance(ChestAnyWhere plugin) {
 		if (instance == null) {
 			instance = new PluginLanguaje(plugin);
 		}
@@ -107,7 +105,7 @@ public class PluginLanguaje {
 	 */
 	public static String replaceValues(String message, Object... replacements) {
 		for (Object replace : replacements) {
-			message = message.replaceFirst("\\{\\}", String.valueOf(replace));
+			message = message.replaceFirst("\\{}", String.valueOf(replace));
 		}
 		return message;
 	}

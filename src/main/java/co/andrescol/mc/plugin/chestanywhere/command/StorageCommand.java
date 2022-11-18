@@ -4,7 +4,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import co.andrescol.mc.plugin.chestanywhere.Storage;
+import co.andrescol.mc.plugin.chestanywhere.ChestAnyWhere;
 
 /**
  * Superclass that define utils methods
@@ -14,14 +14,14 @@ import co.andrescol.mc.plugin.chestanywhere.Storage;
  */
 public abstract class StorageCommand implements CommandExecutor {
 
-	protected Storage plugin;
+	protected ChestAnyWhere plugin;
 
 	/**
 	 * Initialize the instance
 	 * 
 	 * @param plugin
 	 */
-	protected StorageCommand(Storage plugin) {
+	protected StorageCommand(ChestAnyWhere plugin) {
 		this.plugin = plugin;
 	}
 

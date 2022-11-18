@@ -8,18 +8,18 @@ import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.HumanEntity;
 
-import co.andrescol.mc.plugin.chestanywhere.Storage;
+import co.andrescol.mc.plugin.chestanywhere.ChestAnyWhere;
 
 public class YamlDataManager {
 
-	private Storage plugin;
+	private ChestAnyWhere plugin;
 
 	/**
 	 * Create the instance
 	 * 
 	 * @param plugin plugin
 	 */
-	private YamlDataManager(Storage plugin) {
+	private YamlDataManager(ChestAnyWhere plugin) {
 		this.plugin = plugin;	
 	}
 
@@ -78,7 +78,7 @@ public class YamlDataManager {
 	// ===================== STATICS =================================
 	private static YamlDataManager instance;
 
-	public static YamlDataManager getInstance(Storage plugin) {
+	public static YamlDataManager getInstance(ChestAnyWhere plugin) {
 		if (instance == null) {
 			instance = new YamlDataManager(plugin);
 		}

@@ -10,7 +10,7 @@ import org.bukkit.inventory.InventoryHolder;
  * @author andres.morales
  *
  */
-public class StorageHolder implements InventoryHolder {
+public class ChestAnyWhereHolder implements InventoryHolder {
 
 	@Override
 	public Inventory getInventory() {

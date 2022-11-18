@@ -1,8 +1,8 @@
 name: ChestAnyWhere
 version: 1.0.0 
-main: co.andrescol.mc.plugin.chestanywhere
+main: co.andrescol.mc.plugin.chestanywhere.ChestAnyWherePlugin
 description: With this plugin you can save items in a SQLite or MySQL Database for each player
-author: [xX_andrescol_Xx]
+author: xX_andrescol_Xx
 api-version: 1.19
 commands:
   sopen: 

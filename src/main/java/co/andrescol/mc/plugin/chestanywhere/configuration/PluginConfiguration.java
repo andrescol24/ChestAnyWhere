@@ -2,7 +2,7 @@ package co.andrescol.mc.plugin.chestanywhere.configuration;
 
 import org.bukkit.configuration.file.FileConfiguration;
 
-import co.andrescol.mc.plugin.chestanywhere.Storage;
+import co.andrescol.mc.plugin.chestanywhere.ChestAnyWhere;
 
 /**
  * Singleton class that save the configuration
@@ -16,14 +16,14 @@ public class PluginConfiguration {
 	private String version;
 	private String storagePath;
 	
-	private final Storage plugin;
+	private final ChestAnyWhere plugin;
 
 	/**
 	 * Create the instance for the configuration
 	 * 
 	 * @param plugin
 	 */
-	private PluginConfiguration(Storage plugin) {
+	private PluginConfiguration(ChestAnyWhere plugin) {
 		this.plugin = plugin;
 		this.loadConfiguration(plugin);
 	}
@@ -41,7 +41,7 @@ public class PluginConfiguration {
 	 * 
 	 * @param plugin
 	 */
-	private void loadConfiguration(Storage plugin) {
+	private void loadConfiguration(ChestAnyWhere plugin) {
 		FileConfiguration configFile = plugin.getFileConfiguration();
 		this.version = configFile.getString("version");
 		this.storagePath = configFile.getString("storage-path");
@@ -57,7 +57,7 @@ public class PluginConfiguration {
 	 * @param plugin Plugin
 	 * @return instance
 	 */
-	public static PluginConfiguration getInstance(Storage plugin) {
+	public static PluginConfiguration getInstance(ChestAnyWhere plugin) {
 		if (instance == null) {
 			instance = new PluginConfiguration(plugin);
 		}

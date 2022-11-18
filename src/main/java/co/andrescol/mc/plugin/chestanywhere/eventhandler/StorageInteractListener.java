@@ -9,8 +9,8 @@ import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 
-import co.andrescol.mc.plugin.chestanywhere.Storage;
-import co.andrescol.mc.plugin.chestanywhere.StorageHolder;
+import co.andrescol.mc.plugin.chestanywhere.ChestAnyWhere;
+import co.andrescol.mc.plugin.chestanywhere.ChestAnyWhereHolder;
 import co.andrescol.mc.plugin.chestanywhere.data.YamlDataManager;
 
 /**
@@ -22,14 +22,14 @@ import co.andrescol.mc.plugin.chestanywhere.data.YamlDataManager;
  */
 public class StorageInteractListener implements Listener {
 
-	private final Storage plugin;
+	private final ChestAnyWhere plugin;
 
 	/**
 	 * Create the listener
 	 * 
 	 * @param plugin plugin
 	 */
-	public StorageInteractListener(Storage plugin) {
+	public StorageInteractListener(ChestAnyWhere plugin) {
 		this.plugin = plugin;
 	}
 
@@ -43,7 +43,7 @@ public class StorageInteractListener implements Listener {
 	public void storageInteract(InventoryCloseEvent event) {
 		Inventory inventory = event.getInventory();
 		InventoryHolder holder = inventory.getHolder();
-		if (holder instanceof StorageHolder) {
+		if (holder instanceof ChestAnyWhereHolder) {
 			// Save the content
 			HumanEntity player = event.getPlayer();
 			YamlDataManager dataManager = YamlDataManager.getInstance(plugin);

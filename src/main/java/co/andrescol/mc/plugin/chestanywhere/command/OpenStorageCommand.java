@@ -12,8 +12,8 @@ import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 
-import co.andrescol.mc.plugin.chestanywhere.Storage;
-import co.andrescol.mc.plugin.chestanywhere.StorageHolder;
+import co.andrescol.mc.plugin.chestanywhere.ChestAnyWhere;
+import co.andrescol.mc.plugin.chestanywhere.ChestAnyWhereHolder;
 import co.andrescol.mc.plugin.chestanywhere.configuration.PluginConfiguration;
 import co.andrescol.mc.plugin.chestanywhere.configuration.PluginLanguaje;
 import co.andrescol.mc.plugin.chestanywhere.configuration.PluginLanguaje.LanguajeProperty;
@@ -28,7 +28,7 @@ import co.andrescol.mc.plugin.chestanywhere.data.YamlDataManager;
  */
 public class OpenStorageCommand extends StorageCommand implements CommandExecutor, TabCompleter {
 
-	public OpenStorageCommand(Storage plugin) {
+	public OpenStorageCommand(ChestAnyWhere plugin) {
 		super(plugin);
 	}
 
@@ -62,7 +62,7 @@ public class OpenStorageCommand extends StorageCommand implements CommandExecuto
 				// Read the playerStorage (content)
 				YamlDataManager dataManager = YamlDataManager.getInstance(plugin);
 				StorageContent content = dataManager.get(player);
-				Inventory inventory = Bukkit.createInventory(new StorageHolder(), 27,
+				Inventory inventory = Bukkit.createInventory(new ChestAnyWhereHolder(), 27,
 						languaje.getMessage(LanguajeProperty.STORAGE_NAME));
 				if (content.getContent() != null) {
 					inventory.setContents(content.getContent());
