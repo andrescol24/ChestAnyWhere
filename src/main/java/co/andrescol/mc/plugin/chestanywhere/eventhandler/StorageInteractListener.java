@@ -1,6 +1,8 @@
 package co.andrescol.mc.plugin.chestanywhere.eventhandler;
 
+import co.andrescol.mc.plugin.chestanywhere.ChestAnyWhereHolder;
 import co.andrescol.mc.plugin.chestanywhere.data.StorageContent;
+import co.andrescol.mc.plugin.chestanywhere.data.YamlDataManager;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -8,10 +10,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
-
-import co.andrescol.mc.plugin.chestanywhere.ChestAnyWhere;
-import co.andrescol.mc.plugin.chestanywhere.ChestAnyWhereHolder;
-import co.andrescol.mc.plugin.chestanywhere.data.YamlDataManager;
 
 /**
  * Listener for the inventories interaction. It validate if the invetory is a
@@ -21,17 +19,6 @@ import co.andrescol.mc.plugin.chestanywhere.data.YamlDataManager;
  *
  */
 public class StorageInteractListener implements Listener {
-
-	private final ChestAnyWhere plugin;
-
-	/**
-	 * Create the listener
-	 * 
-	 * @param plugin plugin
-	 */
-	public StorageInteractListener(ChestAnyWhere plugin) {
-		this.plugin = plugin;
-	}
 
 	/**
 	 * The event have low priority because no all inventories are Storage. The
@@ -46,7 +33,7 @@ public class StorageInteractListener implements Listener {
 		if (holder instanceof ChestAnyWhereHolder) {
 			// Save the content
 			HumanEntity player = event.getPlayer();
-			YamlDataManager dataManager = YamlDataManager.getInstance(plugin);
+			YamlDataManager dataManager = YamlDataManager.getInstance();
 			StorageContent savedContent = dataManager.get(player);
 
 			// If the content has changet, save it

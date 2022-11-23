@@ -5,13 +5,14 @@ description: With this plugin you can save items in a SQLite or MySQL Database f
 author: xX_andrescol_Xx
 api-version: 1.19
 commands:
-  sopen: 
+  copen:
     description: Open the storage 
-    permission-message: '[Storage] You dont haver permission for this command'
-    permission: storage.open.other
-    usage: Incorrect usage, try /sopen <reload|player>
+    permission-message: '[ChestAnyWhere] You dont haver permission for this command'
+    permission: chestanywhere.cmd
+    usage: Incorrect usage, try /copen [reload|player]
 permissions: 
-  storage.sopen: {description: Allow to open other players storage, default: op}
-  storage.reloadconfig: {description: Allow to reload the configuration, default: op}
-      
+  chestanywhere.cmd.open: {description: Allow to open other players storage, default: op}
+  chestanywhere.cmd.reload: {description: Allow to reload the configuration, default: op}
+  chestanywhere.inventory.size.27: { description: Allow to open other players storage, default: true }
+  chestanywhere.inventory.size.54: { description: Allow to open other players storage, default: false }
     

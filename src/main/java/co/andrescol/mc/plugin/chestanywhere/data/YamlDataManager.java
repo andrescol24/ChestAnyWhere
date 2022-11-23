@@ -1,27 +1,22 @@
 package co.andrescol.mc.plugin.chestanywhere.data;
 
-import java.io.File;
-import java.io.IOException;
-
+import co.andrescol.mc.library.plugin.APlugin;
+import co.andrescol.mc.plugin.chestanywhere.ChestAnyWherePlugin;
 import co.andrescol.mc.plugin.chestanywhere.configuration.PluginConfiguration;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.HumanEntity;
 
-import co.andrescol.mc.plugin.chestanywhere.ChestAnyWhere;
+import java.io.File;
+import java.io.IOException;
 
 public class YamlDataManager {
 
-	private ChestAnyWhere plugin;
-
 	/**
 	 * Create the instance
-	 * 
-	 * @param plugin plugin
+	 *
 	 */
-	private YamlDataManager(ChestAnyWhere plugin) {
-		this.plugin = plugin;	
-	}
+	private YamlDataManager() {}
 
 	/**
 	 * Save the storage information
@@ -36,7 +31,7 @@ public class YamlDataManager {
 			yaml.save(playerFile);
 			return true;
 		} catch (IOException e) {
-			this.plugin.error("The data of {} cannot be saved", e, storage.getName());
+			APlugin.getInstance().error("The data of {} cannot be saved", e, storage.getName());
 			return false;
 		}
 	}
@@ -56,20 +51,21 @@ public class YamlDataManager {
 				yaml.load(playerFile);
 				return new StorageContent(yaml);
 			} catch (IOException | InvalidConfigurationException e) {
-				this.plugin.error("Error reading the {} uuid: {} storage", e, player.getName(), player.getUniqueId());
+				APlugin.getInstance().error("Error reading the {} uuid: {} storage", e, player.getName(), player.getUniqueId());
 			}
 		}
 		return new StorageContent(player);
 	}
 	
 	private File getLocation() {
-		PluginConfiguration configuration = PluginConfiguration.getInstance(plugin);
-		String path = configuration.getStoragePath().replace("PLUGIN_DATA_FOLDER", plugin.getPluginFolder().getPath());
+		ChestAnyWherePlugin plugin = APlugin.getInstance();
+		PluginConfiguration configuration = APlugin.getConfigurationObject();
+		String path = configuration.getStoragePath().replace("PLUGIN_DATA_FOLDER", plugin.getDataFolder().getPath());
 		File location = new File(path);
 		if (!location.exists()) {
 			boolean created = location.mkdir();
 			if (created) {
-				this.plugin.info("The Storage dir was created in {}", location.getAbsolutePath());
+				plugin.info("The Storage dir was created in {}", location.getAbsolutePath());
 			}
 		}
 		return location;
@@ -78,9 +74,9 @@ public class YamlDataManager {
 	// ===================== STATICS =================================
 	private static YamlDataManager instance;
 
-	public static YamlDataManager getInstance(ChestAnyWhere plugin) {
+	public static YamlDataManager getInstance() {
 		if (instance == null) {
-			instance = new YamlDataManager(plugin);
+			instance = new YamlDataManager();
 		}
 		return instance;
 	}
