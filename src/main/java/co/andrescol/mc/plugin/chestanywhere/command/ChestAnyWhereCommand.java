@@ -11,6 +11,6 @@ import co.andrescol.mc.library.command.AMainCommand;
 public class ChestAnyWhereCommand extends AMainCommand {
 
     public ChestAnyWhereCommand() {
-        this.defaultCommand = new OpenChestCommand();
+        this.setDefaultCommand(new OpenChestCommand());
     }
 }
