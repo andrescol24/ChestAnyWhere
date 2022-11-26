@@ -6,7 +6,7 @@ import co.andrescol.mc.library.plugin.APlugin;
 import co.andrescol.mc.plugin.chestanywhere.ChestAnyWhereHolder;
 import co.andrescol.mc.plugin.chestanywhere.configuration.Message;
 import co.andrescol.mc.plugin.chestanywhere.configuration.PluginConfiguration;
-import co.andrescol.mc.plugin.chestanywhere.data.StorageContent;
+import co.andrescol.mc.plugin.chestanywhere.data.ChestAnyWhere;
 import co.andrescol.mc.plugin.chestanywhere.data.YamlDataManager;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -35,7 +35,7 @@ public class OpenChestCommand extends ASubCommand {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         Player player = (Player) sender;
-        int chestSize = this.verifyChestSizeByPermissions(player);
+        int chestSize = this.getChestSizeByPermission(player);
 
         if (!sender.hasPermission("chestanywhere.cmd.open") || chestSize == 0) {
             AMessage.sendMessage(sender, Message.NOT_PERMISSION_OPEN, args[0]);
@@ -43,7 +43,7 @@ public class OpenChestCommand extends ASubCommand {
 
         // Read the playerStorage (content)
         YamlDataManager dataManager = YamlDataManager.getInstance();
-        StorageContent content = dataManager.get(player);
+        ChestAnyWhere content = dataManager.get(player);
         Inventory inventory = Bukkit.createInventory(new ChestAnyWhereHolder(), chestSize, AMessage.getMessage(Message.STORAGE_NAME));
         if(inventory.getSize() >= content.getContent().length) {
             inventory.setContents(content.getContent());
@@ -54,13 +54,14 @@ public class OpenChestCommand extends ASubCommand {
                     itemsDidNotFit.forEach((position, item) -> player.getWorld().dropItemNaturally(player.getLocation(), item));
                 }
             }
+            dataManager.update(content, inventory);
         }
         player.openInventory(inventory);
 
         return true;
     }
 
-    private int verifyChestSizeByPermissions(Player player) {
+    private int getChestSizeByPermission(Player player) {
         PluginConfiguration configuration = APlugin.getConfigurationObject();
         Optional<Integer> size = configuration.getChestSizes().stream()
                 .filter(x -> player.hasPermission("chestanywhere.inventory.size." + x))

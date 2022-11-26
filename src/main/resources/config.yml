@@ -1,5 +1,6 @@
 # PLUGIN_DATA_FOLDER means plugins/Storaga/. Replace for your custom location
 storage-path: PLUGIN_DATA_FOLDER/storages
 chest-sizes:
+  - 9 # Small
   - 27 # Small chest
   - 54 # Large chest

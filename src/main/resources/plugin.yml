@@ -13,6 +13,4 @@ commands:
 permissions: 
   chestanywhere.cmd.open: {description: Allow to open other players storage, default: op}
   chestanywhere.cmd.reload: {description: Allow to reload the configuration, default: op}
-  chestanywhere.inventory.size.27: { description: Allow to open other players storage, default: true }
-  chestanywhere.inventory.size.54: { description: Allow to open other players storage, default: false }
-    
+  chestanywhere.inventory.size.9: { description: Allow to open other players storage, default: op }

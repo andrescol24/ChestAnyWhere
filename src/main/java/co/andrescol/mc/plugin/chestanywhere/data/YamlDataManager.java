@@ -6,6 +6,7 @@ import co.andrescol.mc.plugin.chestanywhere.configuration.PluginConfiguration;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.HumanEntity;
+import org.bukkit.inventory.Inventory;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,18 +22,18 @@ public class YamlDataManager {
 	/**
 	 * Save the storage information
 	 * 
-	 * @param storage Storage
+	 * @param content Storage
 	 */
-	public boolean put(HumanEntity player, StorageContent storage) {
-		File location = this.getLocation();
-		File playerFile = new File(location, player.getUniqueId() + ".yml");
-		try {
-			YamlConfiguration yaml = storage.toYaml();
-			yaml.save(playerFile);
-			return true;
-		} catch (IOException e) {
-			APlugin.getInstance().error("The data of {} cannot be saved", e, storage.getName());
-			return false;
+	public void update(ChestAnyWhere content, Inventory inventory) {
+		if (content.hasChanged(inventory)) {
+			content.setContent(inventory.getContents());
+			File playerFile = new File(this.getLocation(), content.getUuid() + ".yml");
+			try {
+				YamlConfiguration yaml = content.toYaml();
+				yaml.save(playerFile);
+			} catch (IOException e) {
+				APlugin.getInstance().error("The data of {} cannot be saved", e, content.getName());
+			}
 		}
 	}
 
@@ -42,19 +43,19 @@ public class YamlDataManager {
 	 * @param player the player
 	 * @return the playerStorage or null if not exist
 	 */
-	public StorageContent get(HumanEntity player) {
+	public ChestAnyWhere get(HumanEntity player) {
 		File location = this.getLocation();
 		File playerFile = new File(location, player.getUniqueId() + ".yml");
 		if (playerFile.exists()) {
 			try {
 				YamlConfiguration yaml = new YamlConfiguration();
 				yaml.load(playerFile);
-				return new StorageContent(yaml);
+				return new ChestAnyWhere(yaml);
 			} catch (IOException | InvalidConfigurationException e) {
 				APlugin.getInstance().error("Error reading the {} uuid: {} storage", e, player.getName(), player.getUniqueId());
 			}
 		}
-		return new StorageContent(player);
+		return new ChestAnyWhere(player);
 	}
 	
 	private File getLocation() {

@@ -15,38 +15,24 @@ import org.bukkit.inventory.ItemStack;
  * @author andrescol24
  *
  */
-public class StorageContent {
+public class ChestAnyWhere {
 
-	private String name;
-	private UUID uuid;
+	private final String name;
+	private final UUID uuid;
 	private ItemStack[] content;
 	private int hashCode;
 
 	/**
-	 * Create a instance of this class, assigning the name, content and hashCode
+	 * Create a instance of this class, assigning the name
 	 * 
 	 * @param player    Player
-	 * @param inventory inventory
 	 */
-	public StorageContent(HumanEntity player, Inventory inventory) {
-		this.name = player.getName();
-		this.content = inventory.getContents();
-		this.hashCode = Arrays.hashCode(this.content);
-		this.uuid = player.getUniqueId();
-	}
-
-	/**
-	 * Create a instance of this class, assigning the name, content and hashCode
-	 * 
-	 * @param player    Player
-	 * @param inventory inventory
-	 */
-	public StorageContent(HumanEntity player) {
+	public ChestAnyWhere(HumanEntity player) {
 		this.name = player.getName();
 		this.uuid = player.getUniqueId();
 	}
 
-	public StorageContent(YamlConfiguration yaml) {
+	public ChestAnyWhere(YamlConfiguration yaml) {
 		this.name = yaml.getString("name");
 		this.uuid = UUID.fromString(yaml.getString("uuid"));
 		this.hashCode = yaml.getInt("hashCode");
@@ -71,11 +57,7 @@ public class StorageContent {
 		return content;
 	}
 
-	public int getHashCode() {
-		return hashCode;
-	}
-
-	public void setContent(ItemStack[] content) {
+	protected void setContent(ItemStack[] content) {
 		this.content = content;
 		this.hashCode = Arrays.hashCode(this.content);
 	}
@@ -86,11 +68,11 @@ public class StorageContent {
 	 * @param inventory Inventory
 	 * @return <code>true</code> if it has changed
 	 */
-	public boolean hasChanged(Inventory inventory) {
+	protected boolean hasChanged(Inventory inventory) {
 		return this.hashCode != Arrays.hashCode(inventory.getContents());
 	}
 	
-	public YamlConfiguration toYaml() {
+	protected YamlConfiguration toYaml() {
 		YamlConfiguration yaml = new YamlConfiguration();
 		yaml.set("name", this.name);
 		yaml.set("uuid", this.uuid.toString());
