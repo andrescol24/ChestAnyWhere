@@ -2,7 +2,6 @@ package co.andrescol.mc.plugin.chestanywhere.data;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
 
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.HumanEntity;
@@ -18,7 +17,6 @@ import org.bukkit.inventory.ItemStack;
 public class ChestAnyWhere {
 
 	private final String name;
-	private final UUID uuid;
 	private ItemStack[] content;
 	private int hashCode;
 
@@ -29,12 +27,11 @@ public class ChestAnyWhere {
 	 */
 	public ChestAnyWhere(HumanEntity player) {
 		this.name = player.getName();
-		this.uuid = player.getUniqueId();
+		this.content = new ItemStack[0];
 	}
 
 	public ChestAnyWhere(YamlConfiguration yaml) {
 		this.name = yaml.getString("name");
-		this.uuid = UUID.fromString(yaml.getString("uuid"));
 		this.hashCode = yaml.getInt("hashCode");
 		List<?> list = yaml.getList("content");
 		ItemStack[] inventory = new ItemStack[list.size()];
@@ -47,10 +44,6 @@ public class ChestAnyWhere {
 
 	public String getName() {
 		return name;
-	}
-
-	public UUID getUuid() {
-		return uuid;
 	}
 
 	public ItemStack[] getContent() {
@@ -75,7 +68,6 @@ public class ChestAnyWhere {
 	protected YamlConfiguration toYaml() {
 		YamlConfiguration yaml = new YamlConfiguration();
 		yaml.set("name", this.name);
-		yaml.set("uuid", this.uuid.toString());
 		yaml.set("hashCode", this.hashCode);
 		yaml.set("content", this.content);
 		return yaml;

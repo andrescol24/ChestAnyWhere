@@ -27,7 +27,7 @@ public class YamlDataManager {
 	public void update(ChestAnyWhere content, Inventory inventory) {
 		if (content.hasChanged(inventory)) {
 			content.setContent(inventory.getContents());
-			File playerFile = new File(this.getLocation(), content.getUuid() + ".yml");
+			File playerFile = this.getPlayerContentFile(content.getName());
 			try {
 				YamlConfiguration yaml = content.toYaml();
 				yaml.save(playerFile);
@@ -44,8 +44,7 @@ public class YamlDataManager {
 	 * @return the playerStorage or null if not exist
 	 */
 	public ChestAnyWhere get(HumanEntity player) {
-		File location = this.getLocation();
-		File playerFile = new File(location, player.getUniqueId() + ".yml");
+		File playerFile = this.getPlayerContentFile(player.getName());
 		if (playerFile.exists()) {
 			try {
 				YamlConfiguration yaml = new YamlConfiguration();
@@ -58,7 +57,7 @@ public class YamlDataManager {
 		return new ChestAnyWhere(player);
 	}
 	
-	private File getLocation() {
+	private File getPlayerContentFile(String playerName) {
 		ChestAnyWherePlugin plugin = APlugin.getInstance();
 		PluginConfiguration configuration = APlugin.getConfigurationObject();
 		String path = configuration.getStoragePath().replace("PLUGIN_DATA_FOLDER", plugin.getDataFolder().getPath());
@@ -69,7 +68,7 @@ public class YamlDataManager {
 				plugin.info("The Storage dir was created in {}", location.getAbsolutePath());
 			}
 		}
-		return location;
+		return new File(location, playerName.hashCode() + ".yml");
 	}
 
 	// ===================== STATICS =================================

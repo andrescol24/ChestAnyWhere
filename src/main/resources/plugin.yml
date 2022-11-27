@@ -11,6 +11,6 @@ commands:
     permission: chestanywhere.cmd
     usage: Incorrect usage, try /copen [reload|player]
 permissions: 
-  chestanywhere.cmd.open: {description: Allow to open other players storage, default: op}
+  chestanywhere.cmd: {description: Allow to open other players storage, default: op}
   chestanywhere.cmd.reload: {description: Allow to reload the configuration, default: op}
   chestanywhere.inventory.size.9: { description: Allow to open other players storage, default: op }

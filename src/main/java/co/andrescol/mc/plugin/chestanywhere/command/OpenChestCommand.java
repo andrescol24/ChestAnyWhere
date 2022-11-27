@@ -2,10 +2,8 @@ package co.andrescol.mc.plugin.chestanywhere.command;
 
 import co.andrescol.mc.library.command.ASubCommand;
 import co.andrescol.mc.library.configuration.AMessage;
-import co.andrescol.mc.library.plugin.APlugin;
 import co.andrescol.mc.plugin.chestanywhere.ChestAnyWhereHolder;
 import co.andrescol.mc.plugin.chestanywhere.configuration.Message;
-import co.andrescol.mc.plugin.chestanywhere.configuration.PluginConfiguration;
 import co.andrescol.mc.plugin.chestanywhere.data.ChestAnyWhere;
 import co.andrescol.mc.plugin.chestanywhere.data.YamlDataManager;
 import org.bukkit.Bukkit;
@@ -15,10 +13,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * This command executor make that the player open the inventory. This command
@@ -37,8 +32,9 @@ public class OpenChestCommand extends ASubCommand {
         Player player = (Player) sender;
         int chestSize = this.getChestSizeByPermission(player);
 
-        if (!sender.hasPermission("chestanywhere.cmd.open") || chestSize == 0) {
-            AMessage.sendMessage(sender, Message.NOT_PERMISSION_OPEN, args[0]);
+        if (chestSize == 0) {
+            AMessage.sendMessage(sender, Message.NOT_PERMISSION_OPEN);
+            return true;
         }
 
         // Read the playerStorage (content)
@@ -62,8 +58,8 @@ public class OpenChestCommand extends ASubCommand {
     }
 
     private int getChestSizeByPermission(Player player) {
-        PluginConfiguration configuration = APlugin.getConfigurationObject();
-        Optional<Integer> size = configuration.getChestSizes().stream()
+        List<Integer> sizes = Arrays.asList(9, 18, 27, 36, 45, 54);
+        Optional<Integer> size = sizes.stream()
                 .filter(x -> player.hasPermission("chestanywhere.inventory.size." + x))
                 .max(Integer::compareTo);
         return size.orElse(0);

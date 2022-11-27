@@ -15,14 +15,7 @@ public class PluginConfiguration implements AConfigurationObject {
     @AConfigurationKey("storage-path")
     private String storagePath;
 
-    @AConfigurationKey("chest-sizes")
-    private List<Integer> chestSizes;
-
     public String getStoragePath() {
         return storagePath;
-    }
-
-    public List<Integer> getChestSizes() {
-        return chestSizes;
     }
 }
